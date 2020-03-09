@@ -9,3 +9,25 @@
 .yellow {
     background-color: yellow;
 }
+
+* {
+    text-align: center;
+}
+
+#section {
+    display: grid;
+    grid-template-columns: repeat(1, 2fr);
+    grid-template-rows: repeat(10, 2fr);
+    grid-column-gap: 15px;
+    grid-row-gap: 15px;
+}
+
+@media(min-width:500px) {
+    #section {
+        display: grid;
+        grid-template-columns: repeat(2, 5fr);
+        grid-template-rows: repeat(5, 3fr);
+        grid-column-gap: 15px;
+        grid-row-gap: 15px;
+    }
+}
