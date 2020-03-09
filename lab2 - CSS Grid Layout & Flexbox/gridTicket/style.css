@@ -58,16 +58,39 @@ h2 {
     display: none;
 }
 
+.switch2 {
+    display: none;
+}
+
 @media(min-width:900px) {
     #section {
         display: grid;
-        grid-template-columns: repeat(3, 1fr) 1.5fr;
-        grid-template-rows: 200px 100px 100px;
-        width: 900px;
+        grid-template-columns: 200px 200px 200px 200px;
+        grid-template-rows: 200px 100px 80px;
+        width: 1100px;
+        background-position: right;
+        background-size: 100%;
+    }
+
+    .div1 h1,
+    h2 {
+        color: black;
+        font-size: 50px;
+    }
+
+    .div1 h1 {
+        letter-spacing: 20px;
+
+    }
+
+    .div1 h2 {
+        font-weight: lighter;
+        padding-top: 20px;
     }
 
     .div1 {
         grid-area: 1 / 1 / 2 / 4;
+        background-color: transparent;
     }
 
     .div2 {
@@ -92,7 +115,28 @@ h2 {
     .div6 {
         display: grid;
         grid-area: 3 / 1 / 4 / 4;
-
     }
 
+    .switch1 {
+        display: none;
+    }
+
+    .switch2 {
+        display: inherit;
+    }
+
+    .div6 h1 {
+        font-weight: lighter;
+        font-size: 22px;
+    }
+
+    .div3,
+    .div4,
+    .div5 {
+        font-size: 12px;
+        font-weight: lighter;
+        padding-top: 18px;
+        letter-spacing: 5px;
+
+    }
 }
