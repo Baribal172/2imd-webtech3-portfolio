@@ -1,3 +1,7 @@
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 #section div {
     border: black 1px solid;
     text-align: center;
@@ -7,14 +11,25 @@
 .div1 h1,
 h2 {
     color: white;
+}
 
+.div1 h1 {
+    letter-spacing: 10px;
+
+}
+
+.div1 h2 {
+    font-size: medium;
 }
 
 #section {
     display: grid;
     grid-template-columns: repeat(2, 200px);
     grid-template-rows: repeat(4, 0.2fr);
-    background-image: url();
+    background-image: url(BG.jpg);
+    background-position: bottom;
+    width: 400px;
+    box-shadow: inset 0 0 0 1000px rgba(255, 255, 255, .6);
 }
 
 .div1 {
@@ -48,7 +63,7 @@ h2 {
         display: grid;
         grid-template-columns: repeat(3, 1fr) 1.5fr;
         grid-template-rows: 200px 100px 100px;
-
+        width: 900px;
     }
 
     .div1 {
