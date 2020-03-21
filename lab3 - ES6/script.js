@@ -15,10 +15,11 @@ class Note {
 
     // HINT🤩 a.addEventListener('click', this.remove.bind(newNote));
     let newA = document.createElement("a");
-    newA.innerHTML = "Remove";
+    newA.innerHTML = "remove";
+    newA.addEventListener('click', this.remove.bind(newNote));
     newNote.appendChild(newA);
-
     return newNote;
+
   }
 
   add() {
@@ -36,6 +37,7 @@ class Note {
   remove() {
     // HINT🤩 the meaning of 'this' was set by bind() in the createElement function
     // in this function, 'this' will refer to the current note element
+    this.remove();
   }
 }
 
@@ -49,6 +51,7 @@ class App {
     this.btnAdd = document.querySelector("#btnAddNote");
     this.btnAdd.addEventListener("click", this.createNote.bind(this));
     // this.loadNotesFromStorage();
+
   }
 
   loadNotesFromStorage() {
