@@ -43,6 +43,14 @@ class Note {
     // HINT🤩 the meaning of 'this' was set by bind() in the createElement function
     // in this function, 'this' will refer to the current note element
     this.remove();
+    let notes = JSON.parse(localStorage.getItem(`notes`));
+    //inhoud van de note zoeken om zo via indexOf de key te vinden
+    let noteContent = this.querySelector(`p`).innerHTML;
+    let index = notes.indexOf(noteContent);
+    notes.splice(index, 1);
+
+    localStorage.setItem("notes", JSON.stringify(notes));
+    console.log(localStorage);
   }
 }
 
