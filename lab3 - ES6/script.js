@@ -11,7 +11,8 @@ class Note {
     let newP = document.createElement("p"); //p todo 
     newP.innerHTML = title;
 
-    newNote.appendChild(newP); //div met class card met een p todo in
+    newNote.appendChild(newP);
+    //div met class card met een p todo in
 
     // HINT🤩 a.addEventListener('click', this.remove.bind(newNote));
     let newA = document.createElement("a");
@@ -32,6 +33,10 @@ class Note {
     // HINT🤩
     // localStorage only supports strings, not arrays
     // if you want to store arrays, look at JSON.parse and JSON.stringify
+    let notes = JSON.parse(localStorage.getItem("notes")) || [];
+    notes.push(this.title);
+    localStorage.setItem("notes", JSON.stringify(notes));
+
   }
 
   remove() {
@@ -65,6 +70,9 @@ class App {
     let text = document.querySelector("#txtAddNote").value;
     let note = new Note(text);
     note.add();
+    note.saveToStorage();
+    this.reset();
+
     // HINT🤩
     // note.add();
     // note.saveToStorage();
@@ -73,8 +81,9 @@ class App {
 
   reset() {
     // this function should reset the form 
+    document.querySelector("form").reset();
+    console.log(localStorage);
   }
 
 }
-
 let app = new App();
