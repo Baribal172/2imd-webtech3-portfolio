@@ -13,3 +13,6 @@ https://codepen.io/baribal172/pen/rNVpwdB?editors=1100
 
 - Lab3 ES6
 https://codepen.io/baribal172/pen/dyoqRze
+
+- Lab4 App prototype
+https://github.com/Baribal172/2imd-webtech3-portfolio/tree/master/lab4%20-%20App%20prototype
