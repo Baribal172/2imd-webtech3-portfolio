@@ -1,4 +1,4 @@
-class App {
+class Weather {
     constructor() {
         this.getLocation();
         this.lat;
@@ -26,11 +26,14 @@ class App {
             .then(data => {
                 document.querySelector('#weather').innerHTML = `The pressure nearby is ${data.currently.pressure} hectopascal, but you'll still have to apply pressure yourself, buy our new toilet paper`
                 let temp = data.currently.temperature;
-                if (temp < 45) {
-                    document.querySelector("#ad").style.backgroundImage = "url('img/sunny.jpg')";
-                } else {
+                console.log(temp);
+                if (temp <= 50) {
                     document.querySelector("#ad").style.backgroundImage = "url('img/rainy.jpg')";
+                } else {
+                    document.querySelector("#ad").style.backgroundImage = "url('img/sunny.jpg')";
                 }
+                document.querySelector("#summary").innerHTML = `Today it's ${data.currently.summary}`;
+                document.querySelector("#temp").innerHTML = `${temp} ºF`;
             })
             .catch(err => {
                 console.log(err);
@@ -41,5 +44,4 @@ class App {
         console.log(err);
     }
 }
-let app = new App();
-//document.getElementById("imageid").src="../template/save.png";
+let weather = new Weather();
