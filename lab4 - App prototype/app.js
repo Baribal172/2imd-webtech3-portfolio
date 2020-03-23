@@ -19,6 +19,7 @@ class Weather {
         this.getPressure();
         this.getSummary();
     }
+
     getWeather() {
         let url = `https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/d7ab9bc692263c2ccaa208429a097dc4/${this.lat},${this.lng}`
         fetch(url)
@@ -27,11 +28,15 @@ class Weather {
             })
             .then(data => {
                 localStorage.setItem("response", JSON.stringify(data));
-                console.log(localStorage);
+                console.log("herlaadt");
             })
             .catch(err => {
                 console.log(err);
-            })
+            });
+        setInterval(() => {
+            this.getWeather();
+        }, 60 * 60000);
+
     }
     getTemp() {
         let storage = JSON.parse(localStorage.getItem("response"));
