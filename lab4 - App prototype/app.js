@@ -15,7 +15,6 @@ class App {
         this.lat = result.coords.latitude;
         this.lng = result.coords.longitude;
         this.getWeather();
-        console.log(this.lat);
     }
     getWeather() {
         let url = `https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/d7ab9bc692263c2ccaa208429a097dc4/${this.lat},${this.lng}`
@@ -25,8 +24,13 @@ class App {
                 return response.json();
             })
             .then(data => {
-                document.querySelector('#weather').innerHTML =
-                    data.currently.summary;
+                document.querySelector('#weather').innerHTML = `The pressure nearby is ${data.currently.pressure} hectopascal, but you'll still have to apply pressure yourself, buy our new toilet paper`
+                let temp = data.currently.temperature;
+                if (temp < 45) {
+                    document.querySelector("#ad").style.backgroundImage = "url('img/sunny.jpg')";
+                } else {
+                    document.querySelector("#ad").style.backgroundImage = "url('img/rainy.jpg')";
+                }
             })
             .catch(err => {
                 console.log(err);
@@ -38,3 +42,4 @@ class App {
     }
 }
 let app = new App();
+//document.getElementById("imageid").src="../template/save.png";
