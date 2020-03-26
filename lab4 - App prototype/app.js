@@ -15,9 +15,10 @@ class Weather {
         this.lat = result.coords.latitude;
         this.lng = result.coords.longitude;
         this.getWeather();
-        this.getTemp();
+        // this.getTemp();
         this.getPressure();
         this.getSummary();
+        this.getImages();
     }
 
     getWeather() {
@@ -36,16 +37,35 @@ class Weather {
         setInterval(() => {
             this.getWeather();
         }, 60 * 60000);
-
     }
-    getTemp() {
-        let storage = JSON.parse(localStorage.getItem("response"));
-        if (storage.currently.temperature <= 20) {
-            document.querySelector("#ad").style.backgroundImage = "url('img/rainy.jpg')";
-        } else {
-            document.querySelector("#ad").style.backgroundImage = "url('img/sunny.jpg')";
-        }
+    //new code that loads img from pixabay api
+    getImages() {
+        var key = '15750540-4b288fe0d31b466d153c9c58a';
+        var query = "toilet paper";
+        var url = "https://pixabay.com/api/?key=" + key + "&q=" + query;
+        fetch(url)
+            .then(response => {
+                return response.json();
+            })
+            .then(data => {
+                let hits = data["hits"];
+                let firstHit = hits[Math.floor((Math.random() * 20) + 0)];
+                let imageURL = firstHit["largeImageURL"];
+                document.querySelector("#ad").style.backgroundImage = `url(${imageURL})`;
+            })
+            .catch(err => {
+                console.log(err);
+            });
     }
+    //old code without the use of the second api
+    // getTemp() {
+    //     let storage = JSON.parse(localStorage.getItem("response"));
+    //     if (storage.currently.temperature <= 20) {
+    //         document.querySelector("#ad").style.backgroundImage = "url('img/rainy.jpg')";
+    //     } else {
+    //         document.querySelector("#ad").style.backgroundImage = "url('img/sunny.jpg')";
+    //     }
+    // }
     getPressure() {
         let storage = JSON.parse(localStorage.getItem("response"));
         document.querySelector('#weather').innerHTML = `The pressure nearby is ${storage.currently.pressure} hectopascal, but you'll still have to apply pressure yourself, buy our new toilet paper`;
